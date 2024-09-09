@@ -1,0 +1,13 @@
+body{
+  background-color: rgba(82, 76, 76, 0.527);
+  /* background-image: url(https://i.pinimg.com/236x/98/0e/99/980e99603dc477f0ad105a6c378a5567.jpg); */
+  background-size: cover;
+  background-repeat: no-repeat;
+ background-position: center;
+ background-attachment: fixed;
+}
+
+h1{
+    text-align:center;
+    color:white;
+}
