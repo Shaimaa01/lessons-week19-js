@@ -237,7 +237,7 @@ User4.prototype.sayWelcome = function () {
   return `Welcome ${this.u}`;
 };
 
-Object.prototype.love = "Elzero web school";
+// Object.prototype.love = "Elzero web school";
 
 String.prototype.addDotBeforeAndAfter = function (val) {
   return `.${this}.`;
@@ -253,16 +253,59 @@ Object Meta Data And Descriptor
   configurable [Cannot Delete Or Reconfigure]
 */
 
-// const myObject = {
-//   a: 1,
-//   b: 2,
-// };
+const myObject = {
+  a: 1,
+  b: 2,
+};
 
-// Object.defineProperties(myObject, "c", {
-//   writable: true,
-//   enumerable: true,
-//   configurable: true,
-//   value: 3,
-// });
+Object.defineProperty(myObject, "c", {
+  writable: false, // you can not modifie the value of c
+  enumerable: false,
+  configurable: true, // prevent you to modifie or delete(false)
+  value: 3,
+});
 
-// console.log(myObject)
+//redefine property
+Object.defineProperty(myObject, "c", {
+  writable: false, // you can not modifie the value of c
+  enumerable: false,
+  configurable: true, // prevent you to modifie or delete
+  value: 100000,
+});
+
+myObject.c = 100;
+
+for (let prop in myObject) {
+  console.log(prop, myObject[prop]);
+}
+
+console.log(delete myObject.c); // true or false
+
+console.log(myObject);
+
+/*
+lesson => 158
+Object Meta Data And Descriptor
+  Define Multiple Properties
+  Check Descriptors
+*/
+
+Object.defineProperties(myObject, {
+  c: {
+    configrable: true,
+    value: 3,
+  },
+  d: {
+    configrable: true,
+    value: 4,
+  },
+  e: {
+    configrable: true,
+    value: 5,
+  },
+});
+
+console.log(myObject);
+
+console.log(Object.getOwnPropertyDescriptor(myObject, "d"));
+console.log(Object.getOwnPropertyDescriptors(myObject));
